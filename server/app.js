@@ -13,9 +13,7 @@ const { postTypeDefs, postResolvers } = require("./schemas/post");
 const { followTypeDefs, followResolvers } = require("./schemas/follow");
 const authentication = require("./utils/auth");
 const { GraphQLError } = require("graphql");
-const cors = require("cors");
 
-app.use(cors());
 const server = new ApolloServer({
   typeDefs: [responseTypeDefs, userTypeDefs, postTypeDefs, followTypeDefs],
   resolvers: [userResolvers, postResolvers, followResolvers],
