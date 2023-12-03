@@ -38,6 +38,15 @@ const resolvers = {
           };
         }
 
+        if (userId === followUserId) {
+          return {
+            statusCode: 409,
+            message: "You cannot follow yourself",
+            data: null,
+            error: null,
+          };
+        }
+
         await redis.set(redisKey, true);
 
         const result = await Follow.followUser(userId, followUserId);
