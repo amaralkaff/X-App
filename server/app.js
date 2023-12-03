@@ -15,6 +15,7 @@ const authentication = require("./utils/auth");
 const { GraphQLError } = require("graphql");
 const cors = require("cors");
 
+app.use(cors());
 const server = new ApolloServer({
   typeDefs: [responseTypeDefs, userTypeDefs, postTypeDefs, followTypeDefs],
   resolvers: [userResolvers, postResolvers, followResolvers],
@@ -24,8 +25,6 @@ const server = new ApolloServer({
     };
   },
 });
-
-app.use(cors());
 
 (async () => {
   try {
